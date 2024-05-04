@@ -64,3 +64,36 @@ const images = [
       },
     ];
     
+    const gallery = document.querySelector('.gallery');
+
+    const createGalleryItem = ({ preview, original, description }) => `
+      <li class="gallery-item">
+        <a class="gallery-link" href="${original}">
+          <img
+            width="360px";
+            height="200px";
+            class="gallery-image"
+            src="${preview}"
+            data-source="${original}"
+            alt="${description}"
+          />
+        </a>
+      </li>
+    `;
+
+    const addGalleryItems = (items) => {
+      const galleryMarkup = items.map(createGalleryItem).join('');
+      gallery.insertAdjacentHTML('beforeend', galleryMarkup);
+    };
+
+    addGalleryItems(images);
+
+    gallery.style.display = "flex";
+    gallery.style.flexWrap = "wrap";
+    gallery.style.columnGap = "25px";
+    gallery.style.rowGap = "25px";
+    gallery.style.flexDirectio = "column";
+    gallery.style.justifyContent = "center";
+    gallery.style.alignItems = "flexStart";
+    gallery.style.listStyleType = "none";
+    gallery.style.width = "1440px";
